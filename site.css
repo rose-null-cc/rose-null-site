@@ -1,0 +1,63 @@
+/* rose.null — site. Feuille d'instrument : papier gris froid, objets noirs, quatre couleurs d'encodeurs, mono minuscule. */
+:root { --bg: #e8e8e4; --plan: #f4f4f1; --encre: #141414; --doux: #6c6c66; --trait: #c9c9c3;
+  --c1: #2c64d8; --c2: #18a35e; --c3: #f2f2ee; --c4: #ff5b1f; --vitre: #0b0b0d;
+  --display: "Archivo", "Helvetica Neue", Arial, sans-serif; --mono: "IBM Plex Mono", ui-monospace, Consolas, monospace; }
+@media (prefers-color-scheme: dark) { :root { --bg: #121212; --plan: #1b1b1a; --encre: #ededea; --doux: #9a9a94; --trait: #33332f; --c3: #d6d6d0; --vitre: #000; color-scheme: dark } }
+* { box-sizing: border-box }
+html { scroll-behavior: smooth }
+body { margin: 0; background: var(--bg); color: var(--encre); font-family: var(--display); font-stretch: 100%; font-size: 16px; line-height: 1.55;
+  padding: env(safe-area-inset-top, 0px) max(20px, env(safe-area-inset-right, 0px)) 0 max(20px, env(safe-area-inset-left, 0px)) }
+a { color: inherit }
+.haut, main, .pied { max-width: 1240px; margin: 0 auto }
+.haut { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 22px; border-bottom: 1px solid var(--encre) }
+.mot { font-stretch: 112%; font-weight: 700; font-size: 22px; letter-spacing: -.03em; text-decoration: none }
+.mot i, h1 i { font-style: normal; color: var(--c4) }
+.haut nav { display: flex; gap: 6px; flex-wrap: wrap }
+.haut nav a { font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; text-decoration: none; padding: 6px 11px;
+  border: 1px solid var(--trait); border-radius: 99px }
+.haut nav a:hover, .haut nav a:focus-visible, .haut nav a[aria-current] { background: var(--encre); color: var(--bg); border-color: var(--encre); outline: none }
+.lab { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--doux) }
+h1 { font-stretch: 112%; font-weight: 700; font-size: clamp(40px, 6.2vw, 92px); line-height: .9; letter-spacing: -.045em; margin: 0; text-wrap: balance }
+h2 { font-stretch: 112%; font-weight: 700; font-size: clamp(28px, 4vw, 46px); letter-spacing: -.03em; line-height: 1; margin: 0 }
+.ouverture { padding-block: 36px 8px; display: grid; gap: 28px }
+.ouverture .ligne { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap }
+.ouverture p { margin: 0; max-width: 40ch; font-size: 19px }
+.objet { background: var(--plan); border: 1px solid var(--trait); border-radius: 18px; padding: clamp(16px, 4vw, 56px) }
+.objet .facade { max-width: 980px; margin: 0 auto }
+.entrees { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; padding-block: 24px 48px }
+.instrument { padding-block: 0 64px; display: grid; gap: 12px }
+.instrument .ligne { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; border-top: 1px solid var(--trait); padding-top: 12px }
+.entree { position: relative; display: grid; grid-template-rows: auto 1fr auto; gap: 14px; text-decoration: none; background: var(--plan);
+  border: 1px solid var(--trait); border-radius: 14px; padding: 18px; min-width: 0; transition: border-color .15s, transform .15s }
+.entree:hover, .entree:focus-visible { border-color: var(--encre); outline: none; transform: translateY(-2px) }
+.entree .tete { display: flex; justify-content: space-between; align-items: center }
+.entree .pastille { width: 14px; height: 14px; border-radius: 50% }
+.entree .vue { aspect-ratio: 3 / 2; border-radius: 10px; background: var(--vitre); display: grid; place-items: center; overflow: hidden; padding: 10px }
+.entree .vue img { width: 100%; height: auto; image-rendering: pixelated; display: block }
+.entree .vue.claire { background: var(--bg) }
+.entree h2 { display: flex; justify-content: space-between; align-items: baseline }
+.entree h2 span { font-size: .7em; transition: transform .15s }
+.entree:hover h2 span { transform: translateX(6px) }
+.entree p { margin: 0; color: var(--doux); font-size: 15px }
+.gros-chiffre { font-family: var(--mono); font-size: clamp(64px, 9vw, 120px); line-height: 1; letter-spacing: -.04em; color: var(--c4) }
+.vue .grille-pads { display: grid; grid-template-columns: repeat(4, 38px); gap: 8px }
+.vue .grille-pads span { aspect-ratio: 1; border: 1.5px solid var(--encre); border-radius: 6px }
+.vue .grille-pads span:nth-child(n+5) { background: var(--c4); border-color: var(--c4) }
+.pied { display: flex; gap: 8px 24px; flex-wrap: wrap; justify-content: space-between; border-top: 1px solid var(--encre); padding-block: 18px 32px;
+  font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--doux) }
+.facade .t-creme { display: none }
+@media (max-width: 860px) { .entrees { grid-template-columns: minmax(0, 1fr) } }
+/* portfolio */
+.rubrique { padding-block: 40px 8px; border-bottom: 1px solid var(--trait) }
+.rubrique .ligne { display: flex; align-items: baseline; gap: 14px; margin-bottom: 18px }
+.cartes { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 16px; padding-bottom: 32px }
+.carte { background: var(--plan); border: 1px solid var(--trait); border-radius: 12px; padding: 14px; display: grid; gap: 10px; min-width: 0 }
+.carte img, .carte video { width: 100%; height: auto; border-radius: 8px; display: block; background: var(--vitre) }
+.carte iframe { width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: 8px }
+.carte audio { width: 100% }
+.carte h3 { margin: 0; font-stretch: 112%; font-size: 19px; letter-spacing: -.02em }
+.carte p { margin: 0; font-size: 14.5px; color: var(--doux) }
+.vide { border: 1.5px dashed var(--trait); border-radius: 12px; padding: 22px; display: grid; gap: 8px; align-content: center; min-height: 200px; background: transparent }
+.vide b { font-family: var(--mono); font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: .08em }
+.vide p { margin: 0; color: var(--doux); font-size: 14px }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto } .entree, .entree h2 span { transition: none } }
