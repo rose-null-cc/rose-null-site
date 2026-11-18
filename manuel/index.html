@@ -6,22 +6,24 @@
 <style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
 <body>
+<style>.haut-site{text-align:center;padding:9px max(16px,env(safe-area-inset-right,0px)) 9px max(16px,env(safe-area-inset-left,0px));
+font-family:"IBM Plex Mono",ui-monospace,Consolas,monospace;font-size:13px;background:#fff}.haut-site nav{display:inline-flex;gap:6px 10px;flex-wrap:wrap;justify-content:center}
+.haut-site a{color:#000;text-decoration:none}.haut-site a:hover,.haut-site a:focus-visible,.haut-site a[aria-current]{text-decoration:underline;text-underline-offset:2px;outline:none}</style>
+<header class="haut-site"><nav aria-label="Pages"><a href="../">rose.null</a><a href="../liens/">Liens</a><a href="../manuel/" aria-current="page">Manuel</a><a href="../update/">Update</a></nav></header>
 <title>rose.null · manuel 2.31</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,500;112,700;100,400;100,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap">
 <style>
 /* Plan : feuille de montage d'un instrument — fond papier gris froid, écrans noirs posés comme des objets, quatre couleurs
    d'encodeurs pour coder ce qui se tourne, légendes en mono minuscule. Grille 12 colonnes, cartes sans ombre. */
+/* 18/11/2026 : même style que le site (choix de Louis) — papier blanc, une seule police façon code, traits fins, pas de thème sombre */
 :root {
-  --bg: #e8e8e4; --plan: #f4f4f1; --encre: #141414; --doux: #6c6c66; --trait: #c9c9c3;
+  --bg: #ffffff; --plan: #ffffff; --encre: #000000; --doux: #6f6f6f; --trait: #e2e2e2;
   --c1: #2c64d8; --c2: #18a35e; --c3: #f2f2ee; --c4: #ff5b1f; --vitre: #0b0b0d;
-  --display: "Archivo", "Helvetica Neue", Arial, sans-serif; --texte: "Archivo", "Helvetica Neue", Arial, sans-serif;
-  --mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  --display: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace; --texte: var(--display);
+  --mono: var(--display); color-scheme: light;
 }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
-  --bg: #121212; --plan: #1b1b1a; --encre: #ededea; --doux: #9a9a94; --trait: #33332f; --c3: #d6d6d0; --vitre: #000; color-scheme: dark } }
-:root[data-theme="dark"] { --bg: #121212; --plan: #1b1b1a; --encre: #ededea; --doux: #9a9a94; --trait: #33332f; --c3: #d6d6d0; --vitre: #000; color-scheme: dark }
 * { box-sizing: border-box }
 body { background: var(--bg); color: var(--encre); font-family: var(--texte); font-stretch: 100%; font-size: 16px; line-height: 1.55;
   padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 0 64px }
@@ -148,10 +150,19 @@ footer { border-top: 1px solid var(--encre); padding-top: 18px; font-family: var
 @media (max-width: 860px) { .hero, .lecture { grid-template-columns: minmax(0, 1fr) } .hero { padding-block: 32px 24px } }
 @media (max-width: 520px) { .gestes { grid-template-columns: minmax(0, 1fr) } .sec-tete { grid-template-columns: minmax(0, 1fr) } .sec-num { grid-row: auto; padding: 0 } .barre .lien { display: none } }
 @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth } }
+/* allègement façon site : corps plus petit, titres sans graisse forcée, pas d'arrondis ni d'aplats */
+body { font-size: 14px; line-height: 1.5 }
+.hero h1, .sec h2, .carte h4, .maj h3, .lb.fin { font-weight: 600; letter-spacing: -.02em; font-stretch: 100% }
+.sec h2 { font-size: clamp(24px, 3.4vw, 40px) }
+.carte h4 { font-size: 17px; text-transform: uppercase; letter-spacing: 0 }
+.carte, .tab, .maj, .schema { border-radius: 0; background: var(--bg) }
+.barre a, .theme, .badge { border-radius: 0 }
+.lede { font-size: 15px }
+.carte p { font-size: 13.5px }
 </style>
 <div class="wrap">
 <nav class="barre" aria-label="Pages du manuel">
-  <a class="marque" href="../" title="Accueil">← rose.null · 2.31</a>
+  <a class="marque" href="#haut">rose.null · 2.31</a>
   <a class="lien" href="#update">+ update</a>
   <a class="lien" href="#commandes">00 commandes</a>
   <a href="#sound"><span class="mn">1</span>SOUND</a><a href="#process"><span class="mn">2</span>PROCESS</a><a href="#looper"><span class="mn">3</span>LOOPER</a><a href="#tape"><span class="mn">4</span>TAPE</a><a href="#master"><span class="mn">5</span>MASTER</a><a href="#input"><span class="mn">6</span>INPUT</a><a href="#sequence"><span class="mn">7</span>SEQUENCE</a>
