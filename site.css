@@ -1,10 +1,10 @@
-/* rose.null — site. Papier blanc, une seule police à empattements en petit corps, le nom en grandes capitales
+/* rose.null — site. Papier blanc, une seule police façon code (mono) en petit corps, le nom en grandes capitales
    géométriques sur la première image ; ensuite des images de tailles différentes posées librement, avec beaucoup de blanc. */
 :root { --bg: #ffffff; --encre: #000000; --doux: #6f6f6f; --c4: #ff5b1f;
-  --texte: "Times New Roman", Times, "Liberation Serif", serif; --nom: "Jost", "Futura", "Century Gothic", "Avenir Next", sans-serif;
+  --texte: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace; --nom: "Jost", "Futura", "Century Gothic", "Avenir Next", sans-serif;
   color-scheme: light }
 * { box-sizing: border-box }
-body { margin: 0; background: var(--bg); color: var(--encre); font-family: var(--texte); font-size: 14px; line-height: 1.35;
+body { margin: 0; background: var(--bg); color: var(--encre); font-family: var(--texte); font-size: 13px; line-height: 1.45;
   padding: env(safe-area-inset-top, 0px) max(16px, env(safe-area-inset-right, 0px)) 0 max(16px, env(safe-area-inset-left, 0px)) }
 a { color: inherit; text-decoration: none }
 a:hover, a:focus-visible { text-decoration: underline; text-underline-offset: 2px; outline: none }
@@ -13,7 +13,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .haut nav { display: inline-flex; gap: 6px 10px; flex-wrap: wrap; justify-content: center }
 .haut nav a[aria-current] { text-decoration: underline; text-underline-offset: 2px }
 main { max-width: 1280px; margin: 0 auto }
-.majuscules { font-weight: 700; text-transform: uppercase }
+.majuscules { font-weight: 600; text-transform: uppercase }
 /* ouverture : la première image au centre, le nom posé dessus */
 .ouverture { position: relative; min-height: calc(100svh - 40px); display: grid; place-items: center; margin: 0 }
 .ouverture figure { margin: 0; width: min(46vw, 560px); line-height: 0 }
@@ -24,7 +24,7 @@ main { max-width: 1280px; margin: 0 auto }
 .bandeau { display: flex; justify-content: center; gap: 40px clamp(32px, 8vw, 120px); flex-wrap: wrap; text-align: center; padding-block: 56px 72px }
 .bandeau .col { width: min(100%, 260px) }
 .bandeau .bio { width: min(100%, 360px) }
-.bandeau h2 { margin: 0 0 12px; font-size: 14px; font-weight: 700; text-transform: uppercase }
+.bandeau h2 { margin: 0 0 12px; font-size: 13px; font-weight: 600; text-transform: uppercase }
 .bandeau ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px }
 .bandeau .d { display: block; font-style: italic; color: var(--doux) }
 .bandeau .bio p { margin: 0 0 10px }
@@ -41,13 +41,13 @@ main { max-width: 1280px; margin: 0 auto }
 .p4 { grid-column: 9 / span 3; margin-top: 6vw !important }
 /* page liens : des objets centrés, l'image puis le titre en capitales grasses et la nature en italique */
 .liens { padding-block: 40px 100px; display: grid; gap: 72px }
-.liens h2 { margin: 0 0 28px; text-align: center; font-size: 14px; font-weight: 700; text-transform: uppercase }
+.liens h2 { margin: 0 0 28px; text-align: center; font-size: 13px; font-weight: 600; text-transform: uppercase }
 .liens ol { list-style: none; margin: 0 auto; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 210px)); justify-content: center; gap: 48px 36px }
 .liens li a { display: grid; justify-items: center; gap: 4px; text-align: center }
 .liens .v { height: 150px; display: grid; place-items: end center; margin-bottom: 10px }
 .liens .v img { max-height: 150px; max-width: 100%; width: auto; height: auto; display: block }
 .liens .v svg { width: 34px; height: 34px }
-.liens .t { font-weight: 700; text-transform: uppercase; overflow-wrap: anywhere }
+.liens .t { font-weight: 600; text-transform: uppercase; overflow-wrap: anywhere }
 .liens .y { font-style: italic; color: var(--doux) }
 .pied { text-align: center; padding-block: 24px 36px; color: var(--doux) }
 @media (max-width: 760px) {
