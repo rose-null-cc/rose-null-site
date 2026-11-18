@@ -53,6 +53,7 @@ h2 { font-stretch: 112%; font-weight: 700; font-size: clamp(28px, 4vw, 46px); le
 .cartes { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 16px; padding-bottom: 32px }
 .carte { background: var(--plan); border: 1px solid var(--trait); border-radius: 12px; padding: 14px; display: grid; gap: 10px; min-width: 0 }
 .carte img, .carte video { width: 100%; height: auto; border-radius: 8px; display: block; background: var(--vitre) }
+.carte video { max-height: 78vh; object-fit: contain }
 .carte iframe { width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: 8px }
 .carte audio { width: 100% }
 .carte h3 { margin: 0; font-stretch: 112%; font-size: 19px; letter-spacing: -.02em }
