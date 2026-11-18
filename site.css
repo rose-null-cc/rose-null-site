@@ -18,8 +18,9 @@ main { max-width: 1280px; margin: 0 auto }
 .ouverture { position: relative; min-height: calc(100svh - 40px); display: grid; place-items: center; margin: 0 }
 .ouverture figure { margin: 0; width: min(46vw, 560px); line-height: 0 }
 .ouverture img, .ouverture video { width: 100%; height: auto; display: block }
+.ouverture h1 img.titre { width: min(80vw, 900px); height: auto; display: inline-block }
 .ouverture h1 { position: absolute; inset: 50% 0 auto; transform: translateY(-50%); margin: 0; text-align: center; pointer-events: none;
-  font-family: var(--nom); font-weight: 400; font-size: clamp(44px, 9.5vw, 136px); line-height: 1; letter-spacing: .01em; text-transform: uppercase }
+  font-family: var(--texte); font-weight: 400; font-size: clamp(36px, 8vw, 116px); line-height: 1; letter-spacing: -.02em; text-transform: uppercase }
 /* actualités · bio · liens : trois blocs centrés, petits */
 .bandeau { display: flex; justify-content: center; gap: 40px clamp(32px, 8vw, 120px); flex-wrap: wrap; text-align: center; padding-block: 56px 72px }
 .bandeau .col { width: min(100%, 260px) }
