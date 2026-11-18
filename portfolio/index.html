@@ -8,13 +8,52 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,500;112,700;100,400;100,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="../site.css">
+<style>/* Portfolio : planche contact. Fond de chambre noire, images sans cadre en colonnes inégales, cadres numérotés en mono,
+   une seule couleur (l'orange des pads de SEQUENCE) pour les numéros. */
+body.pf { --bg: #0f0f0e; --encre: #ece9e2; --doux: #8d8a83; --trait: #2a2926; background: var(--bg); color: var(--encre); color-scheme: dark }
+body.pf .haut { border-color: var(--trait) }
+body.pf .haut nav a { border-color: var(--trait) }
+body.pf .haut nav a[aria-current], body.pf .haut nav a:hover { background: var(--encre); color: var(--bg) }
+.pf .tete-pf { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 18px 32px; align-items: end; padding-block: 40px 22px; border-bottom: 1px solid var(--trait) }
+.pf .tete-pf h1 { font-size: clamp(56px, 11vw, 168px); letter-spacing: -.055em }
+.pf .compte { font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: .1em; color: var(--doux); display: grid; gap: 4px; text-align: right }
+.pf .compte b { color: var(--encre); font-weight: 500 }
+.pf .sommaire { display: flex; gap: 8px 22px; flex-wrap: wrap; padding-block: 14px; font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: .1em }
+.pf .sommaire a { text-decoration: none; color: var(--doux) }
+.pf .sommaire a:hover, .pf .sommaire a:focus-visible { color: var(--encre); outline: none }
+.pf .sommaire span { color: var(--c4); margin-right: 6px }
+.pf .rub { padding-block: 34px 10px; border-top: 1px solid var(--trait) }
+.pf .rub-tete { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 18px }
+.pf .rub-tete h2 { font-size: clamp(22px, 2.6vw, 30px); letter-spacing: -.02em; display: flex; gap: 12px; align-items: baseline }
+.pf .rub-tete h2 span { font-family: var(--mono); font-size: 13px; font-weight: 400; color: var(--c4); letter-spacing: .06em }
+.pf .planche { columns: 3 300px; column-gap: 18px }
+.pf .planche.n1 { columns: 1; max-width: 680px }
+.pf .planche.n2 { columns: 2 280px }
+.pf .cadre { break-inside: avoid; margin: 0 0 26px; display: grid; gap: 9px }
+.pf .cadre img, .pf .cadre video { width: 100%; height: auto; display: block; background: #000; max-height: 82vh; object-fit: contain }
+.pf .cadre a { display: block; line-height: 0 }
+.pf .cadre img { transition: filter .2s; filter: saturate(.92); width: auto; max-width: 100%; background: none }
+.pf .cadre a:hover img, .pf .cadre a:focus-visible img { filter: saturate(1.05) brightness(1.06) }
+.pf .cadre iframe { width: 100%; aspect-ratio: 16 / 9; border: 0; display: block }
+.pf .cadre audio { width: 100% }
+.pf figcaption { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 2px 12px; font-family: var(--mono); font-size: 11.5px; letter-spacing: .04em }
+.pf figcaption .n { color: var(--c4) }
+.pf figcaption .t { text-transform: uppercase; letter-spacing: .08em; overflow-wrap: anywhere }
+.pf figcaption .d { color: var(--doux) }
+.pf figcaption p { grid-column: 2 / -1; margin: 0; color: var(--doux); font-family: var(--display); font-size: 14px; letter-spacing: 0 }
+.pf .attente { font-family: var(--mono); font-size: 12px; color: var(--doux); padding: 18px 0 30px; display: flex; gap: 14px; align-items: baseline; flex-wrap: wrap }
+.pf .attente::before { content: ""; flex: 0 0 48px; border-top: 1px dashed var(--doux); transform: translateY(-3px) }
+body.pf .pied { border-color: var(--trait) }
+@media (max-width: 560px) { .pf .tete-pf { grid-template-columns: minmax(0, 1fr) } .pf .compte { text-align: left } }
+</style>
 </head>
-<body>
+<body class="pf">
 <header class="haut"><a class="mot" href="../">rose<i>.</i>null</a>
 <nav aria-label="Pages"><a href="../manuel/">manuel</a><a href="../portfolio/" aria-current="page">portfolio</a><a href="../manuel/#update">update</a></nav></header>
 <main>
-<section class="ouverture"><div class="ligne"><h1>portfolio</h1><p>Le prototype de rose.null : photos, vidéos et sons.</p></div></section>
-<section class="rubrique" id="prototypes"><div class="ligne"><span class="lab">01</span><h2>Prototypes</h2></div><div class="cartes"><article class="carte"><img src="../medias/prototype-ecran-pi5.jpg" alt="Raspberry Pi 5 et écran 3,5&quot;" loading="lazy"><h3>Raspberry Pi 5 et écran 3,5&quot;</h3><span class="lab">2026-11</span><p>L&#x27;écran IPS 480 × 320 branché sur plaque d&#x27;essai, page SOUND › FIL.</p></article></div></section><section class="rubrique" id="videos"><div class="ligne"><span class="lab">02</span><h2>Vidéos</h2></div><div class="cartes"><article class="carte"><video src="../medias/video-1.mp4" controls preload="metadata"></video><h3>INPUT › ENTREE</h3><span class="lab">2026-11</span><p>Le simulateur d&#x27;écran, page INPUT.</p></article><article class="carte"><video src="../medias/video-2.mp4" controls preload="metadata"></video><h3>LOOPER › GLANES</h3><span class="lab">2026-11</span><p>Les têtes GLANES sur la boucle.</p></article></div></section><section class="rubrique" id="sons"><div class="ligne"><span class="lab">03</span><h2>Sons</h2></div><div class="cartes"><div class="vide"><b>Sons à venir</b><p>Des extraits courts : un moteur, un effet, une machine du MASTER, une boucle de GLANES.</p></div></div></section><section class="rubrique" id="photos"><div class="ligne"><span class="lab">04</span><h2>Photos</h2></div><div class="cartes"><article class="carte"><img src="../medias/photo-sax.jpg" alt="Sax" loading="lazy"><h3>Sax</h3></article><article class="carte"><img src="../medias/photo-chien.jpg" alt="Promenade" loading="lazy"><h3>Promenade</h3></article></div></section>
+<section class="tete-pf"><h1>portfolio</h1><div class="compte"><span><b>5</b> images, vidéos, sons</span><span>prototype rose.null</span></div></section>
+<nav class="sommaire" aria-label="Rubriques"><a href="#prototypes"><span>01</span>prototypes</a><a href="#videos"><span>02</span>vidéos</a><a href="#sons"><span>03</span>sons</a><a href="#photos"><span>04</span>photos</a></nav>
+<section class="rub" id="prototypes"><div class="rub-tete"><h2><span>01</span>Prototypes</h2><span class="lab">1 élément</span></div><div class="planche n1"><figure class="cadre"><a href="../medias/prototype-ecran-pi5.jpg" target="_blank" rel="noopener" aria-label="Ouvrir en grand : Raspberry Pi 5 et écran 3,5&quot;"><img src="../medias/prototype-ecran-pi5.jpg" alt="Raspberry Pi 5 et écran 3,5&quot;" loading="lazy"></a><figcaption><span class="n">01</span><span class="t">Raspberry Pi 5 et écran 3,5&quot;</span><span class="d">2026-11</span><p>L&#x27;écran IPS 480 × 320 branché sur plaque d&#x27;essai, page SOUND › FIL.</p></figcaption></figure></div></section><section class="rub" id="videos"><div class="rub-tete"><h2><span>02</span>Vidéos</h2><span class="lab">2 éléments</span></div><div class="planche n2"><figure class="cadre"><video src="../medias/video-1.mp4" controls playsinline preload="metadata"></video><figcaption><span class="n">02</span><span class="t">INPUT › ENTREE</span><span class="d">2026-11</span><p>Le simulateur d&#x27;écran, page INPUT.</p></figcaption></figure><figure class="cadre"><video src="../medias/video-2.mp4" controls playsinline preload="metadata"></video><figcaption><span class="n">03</span><span class="t">LOOPER › GLANES</span><span class="d">2026-11</span><p>Les têtes GLANES sur la boucle.</p></figcaption></figure></div></section><section class="rub" id="sons"><div class="rub-tete"><h2><span>03</span>Sons</h2><span class="lab">0 élément</span></div><p class="attente">à venir · Des extraits courts : un moteur, un effet, une machine du MASTER.</p></section><section class="rub" id="photos"><div class="rub-tete"><h2><span>04</span>Photos</h2><span class="lab">2 éléments</span></div><div class="planche n2"><figure class="cadre"><a href="../medias/photo-sax.jpg" target="_blank" rel="noopener" aria-label="Ouvrir en grand : Sax"><img src="../medias/photo-sax.jpg" alt="Sax" loading="lazy"></a><figcaption><span class="n">04</span><span class="t">Sax</span><span class="d"></span></figcaption></figure><figure class="cadre"><a href="../medias/photo-chien.jpg" target="_blank" rel="noopener" aria-label="Ouvrir en grand : Promenade"><img src="../medias/photo-chien.jpg" alt="Promenade" loading="lazy"></a><figcaption><span class="n">05</span><span class="t">Promenade</span><span class="d"></span></figcaption></figure></div></section>
 </main>
 <footer class="pied"><span>rose.null music system</span><span>instrument · Pure Data · Raspberry Pi 5</span><span>version 2.31</span></footer>
 </body>
