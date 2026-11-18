@@ -43,6 +43,20 @@ a { color: inherit }
 .mini .f { transition: transform .15s }
 .tous { display: inline-block; margin-top: 10px; font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .08em; text-decoration: none; border-bottom: 1px solid currentColor }
 @media (max-width: 760px) { .bandeau, .bandeau.avec-bio { grid-template-columns: minmax(0, 1fr) } }
+/* vignettes : pochettes carrées, vidéos en 16:9, pictogrammes ; même hauteur, colonne de largeur fixe */
+.v { display: flex; align-items: center; height: 54px; width: 96px; flex: none }
+.v img { height: 100%; width: auto; display: block; border-radius: 3px; background: var(--trait) }
+.v.v11 img { aspect-ratio: 1; object-fit: cover }
+.v.v169 img { aspect-ratio: 16 / 9; object-fit: cover }
+.v.ico svg { width: 30px; height: 30px; margin-left: 12px }
+main.liens li a { grid-template-columns: 96px 2.2em minmax(0, 1fr) auto 1.2em; align-items: center }
+.mini .v { height: 34px; width: 60px }
+.mini .v.ico svg { width: 22px; height: 22px; margin-left: 6px }
+.mini a { align-items: center; justify-content: flex-start }
+.mini .t { flex: 1; min-width: 0 }
+@media (max-width: 520px) { main.liens li a { grid-template-columns: 72px minmax(0, 1fr) 1em } main.liens .n { display: none }
+  main.liens .v { width: 72px; height: 40px } main.liens .t { grid-column: 2 } main.liens .y { grid-column: 2; grid-row: 2 } main.liens .f { grid-column: 3; grid-row: 1 / span 2 }
+  main.liens .v { grid-row: 1 / span 2 } }
 .haut nav a[aria-current] { background: var(--encre); color: var(--bg); border-color: var(--encre) }
 /* page liens : une colonne étroite, des lignes nettes, l'index en mono, la flèche qui glisse au survol */
 .liens { max-width: 720px; margin: 0 auto; padding-block: clamp(28px, 5vw, 64px) 96px; display: grid; gap: 40px }
