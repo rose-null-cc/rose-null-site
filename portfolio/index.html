@@ -8,53 +8,55 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,500;112,700;100,400;100,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="../site.css">
-<style>/* Portfolio : planche contact. Fond de chambre noire, images sans cadre en colonnes inégales, cadres numérotés en mono,
-   une seule couleur (l'orange des pads de SEQUENCE) pour les numéros. */
-body.pf { --bg: #0f0f0e; --encre: #ece9e2; --doux: #8d8a83; --trait: #2a2926; background: var(--bg); color: var(--encre); color-scheme: dark }
-body.pf .haut { border-color: var(--trait) }
-body.pf .haut nav a { border-color: var(--trait) }
-body.pf .haut nav a[aria-current], body.pf .haut nav a:hover { background: var(--encre); color: var(--bg) }
-.pf .tete-pf { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 18px 32px; align-items: end; padding-block: 40px 22px; border-bottom: 1px solid var(--trait) }
-.pf .tete-pf h1 { font-size: clamp(56px, 11vw, 168px); letter-spacing: -.055em }
-.pf .compte { font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: .1em; color: var(--doux); display: grid; gap: 4px; text-align: right }
-.pf .compte b { color: var(--encre); font-weight: 500 }
-.pf .sommaire { display: flex; gap: 8px 22px; flex-wrap: wrap; padding-block: 14px; font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: .1em }
-.pf .sommaire a { text-decoration: none; color: var(--doux) }
-.pf .sommaire a:hover, .pf .sommaire a:focus-visible { color: var(--encre); outline: none }
-.pf .sommaire span { color: var(--c4); margin-right: 6px }
-.pf .rub { padding-block: 34px 10px; border-top: 1px solid var(--trait) }
-.pf .rub-tete { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 18px }
-.pf .rub-tete h2 { font-size: clamp(22px, 2.6vw, 30px); letter-spacing: -.02em; display: flex; gap: 12px; align-items: baseline }
-.pf .rub-tete h2 span { font-family: var(--mono); font-size: 13px; font-weight: 400; color: var(--c4); letter-spacing: .06em }
-.pf .planche { columns: 3 300px; column-gap: 18px }
-.pf .planche.n1 { columns: 1; max-width: 680px }
-.pf .planche.n2 { columns: 2 280px }
-.pf .cadre { break-inside: avoid; margin: 0 0 26px; display: grid; gap: 9px }
-.pf .cadre img, .pf .cadre video { width: 100%; height: auto; display: block; background: #000; max-height: 82vh; object-fit: contain }
-.pf .cadre a { display: block; line-height: 0 }
-.pf .cadre img { transition: filter .2s; filter: saturate(.92); width: auto; max-width: 100%; background: none }
-.pf .cadre a:hover img, .pf .cadre a:focus-visible img { filter: saturate(1.05) brightness(1.06) }
-.pf .cadre iframe { width: 100%; aspect-ratio: 16 / 9; border: 0; display: block }
-.pf .cadre audio { width: 100% }
-.pf figcaption { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 2px 12px; font-family: var(--mono); font-size: 11.5px; letter-spacing: .04em }
-.pf figcaption .n { color: var(--c4) }
-.pf figcaption .t { text-transform: uppercase; letter-spacing: .08em; overflow-wrap: anywhere }
-.pf figcaption .d { color: var(--doux) }
-.pf figcaption p { grid-column: 2 / -1; margin: 0; color: var(--doux); font-family: var(--display); font-size: 14px; letter-spacing: 0 }
-.pf .attente { font-family: var(--mono); font-size: 12px; color: var(--doux); padding: 18px 0 30px; display: flex; gap: 14px; align-items: baseline; flex-wrap: wrap }
-.pf .attente::before { content: ""; flex: 0 0 48px; border-top: 1px dashed var(--doux); transform: translateY(-3px) }
-body.pf .pied { border-color: var(--trait) }
-@media (max-width: 560px) { .pf .tete-pf { grid-template-columns: minmax(0, 1fr) } .pf .compte { text-align: left } }
+<style>/* Portfolio : une galerie calme. Même papier que l'accueil ; tuiles régulières où chaque média est posé au centre,
+   avec de l'air autour, comme un tirage ; étiquettes mono minuscules ; filtres en pastilles. */
+[hidden] { display: none !important }
+.pf .tete-pf { display: flex; justify-content: space-between; align-items: end; gap: 16px 32px; flex-wrap: wrap; padding-block: 36px 18px }
+.pf .tete-pf h1 { font-size: clamp(34px, 4.6vw, 60px); letter-spacing: -.04em }
+.pf .tete-pf p { margin: 0; color: var(--doux); max-width: 46ch }
+.pf .filtres { display: flex; gap: 6px; flex-wrap: wrap; padding-bottom: 22px; border-bottom: 1px solid var(--trait) }
+.pf .filtres button { font: inherit; font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: inherit;
+  background: none; border: 1px solid var(--trait); border-radius: 99px; padding: 6px 11px; cursor: pointer; display: inline-flex; gap: 7px }
+.pf .filtres button span { color: var(--doux) }
+.pf .filtres button[aria-pressed="true"] { background: var(--encre); color: var(--bg); border-color: var(--encre) }
+.pf .filtres button[aria-pressed="true"] span { color: var(--bg); opacity: .6 }
+.pf .filtres button:focus-visible { outline: 2px solid var(--c4); outline-offset: 2px }
+.pf .galerie { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px 18px; padding-block: 28px 72px }
+.pf .piece { margin: 0; display: grid; gap: 12px; min-width: 0 }
+.pf .socle { aspect-ratio: 4 / 5; background: var(--plan); border-radius: 4px; display: grid; place-items: center; padding: 11%; overflow: hidden }
+.pf .socle img, .pf .socle video { max-width: 100%; max-height: 100%; width: auto; height: auto; display: block; box-shadow: 0 18px 40px -22px rgba(0, 0, 0, .45) }
+.pf a.socle { text-decoration: none; transition: background-color .25s }
+.pf a.socle:hover, .pf a.socle:focus-visible { background: var(--trait); outline: none }
+.pf .socle iframe { width: 100%; aspect-ratio: 16 / 9; border: 0 }
+.pf .socle audio { width: 100% }
+.pf .socle.vide { background: none; border: 1px dashed var(--trait); color: var(--doux); font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; text-align: center }
+.pf figcaption { display: grid; gap: 2px }
+.pf figcaption .l1 { display: flex; justify-content: space-between; gap: 10px; font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--doux) }
+.pf figcaption .t { font-stretch: 112%; font-weight: 700; font-size: 17px; letter-spacing: -.01em }
+.pf figcaption p { margin: 0; font-size: 14px; color: var(--doux) }
+@media (max-width: 860px) { .pf .galerie { grid-template-columns: repeat(2, minmax(0, 1fr)) } }
+@media (max-width: 520px) { .pf .galerie { grid-template-columns: minmax(0, 1fr) } }
+@media (prefers-reduced-motion: reduce) { .pf a.socle { transition: none } }
 </style>
 </head>
 <body class="pf">
 <header class="haut"><a class="mot" href="../">rose<i>.</i>null</a>
 <nav aria-label="Pages"><a href="../manuel/">manuel</a><a href="../portfolio/" aria-current="page">portfolio</a><a href="../manuel/#update">update</a></nav></header>
 <main>
-<section class="tete-pf"><h1>portfolio</h1><div class="compte"><span><b>5</b> images, vidéos, sons</span><span>prototype rose.null</span></div></section>
-<nav class="sommaire" aria-label="Rubriques"><a href="#prototypes"><span>01</span>prototypes</a><a href="#videos"><span>02</span>vidéos</a><a href="#sons"><span>03</span>sons</a><a href="#photos"><span>04</span>photos</a></nav>
-<section class="rub" id="prototypes"><div class="rub-tete"><h2><span>01</span>Prototypes</h2><span class="lab">1 élément</span></div><div class="planche n1"><figure class="cadre"><a href="../medias/prototype-ecran-pi5.jpg" target="_blank" rel="noopener" aria-label="Ouvrir en grand : Raspberry Pi 5 et écran 3,5&quot;"><img src="../medias/prototype-ecran-pi5.jpg" alt="Raspberry Pi 5 et écran 3,5&quot;" loading="lazy"></a><figcaption><span class="n">01</span><span class="t">Raspberry Pi 5 et écran 3,5&quot;</span><span class="d">2026-11</span><p>L&#x27;écran IPS 480 × 320 branché sur plaque d&#x27;essai, page SOUND › FIL.</p></figcaption></figure></div></section><section class="rub" id="videos"><div class="rub-tete"><h2><span>02</span>Vidéos</h2><span class="lab">2 éléments</span></div><div class="planche n2"><figure class="cadre"><video src="../medias/video-1.mp4" controls playsinline preload="metadata"></video><figcaption><span class="n">02</span><span class="t">INPUT › ENTREE</span><span class="d">2026-11</span><p>Le simulateur d&#x27;écran, page INPUT.</p></figcaption></figure><figure class="cadre"><video src="../medias/video-2.mp4" controls playsinline preload="metadata"></video><figcaption><span class="n">03</span><span class="t">LOOPER › GLANES</span><span class="d">2026-11</span><p>Les têtes GLANES sur la boucle.</p></figcaption></figure></div></section><section class="rub" id="sons"><div class="rub-tete"><h2><span>03</span>Sons</h2><span class="lab">0 élément</span></div><p class="attente">à venir · Des extraits courts : un moteur, un effet, une machine du MASTER.</p></section><section class="rub" id="photos"><div class="rub-tete"><h2><span>04</span>Photos</h2><span class="lab">2 éléments</span></div><div class="planche n2"><figure class="cadre"><a href="../medias/photo-sax.jpg" target="_blank" rel="noopener" aria-label="Ouvrir en grand : Sax"><img src="../medias/photo-sax.jpg" alt="Sax" loading="lazy"></a><figcaption><span class="n">04</span><span class="t">Sax</span><span class="d"></span></figcaption></figure><figure class="cadre"><a href="../medias/photo-chien.jpg" target="_blank" rel="noopener" aria-label="Ouvrir en grand : Promenade"><img src="../medias/photo-chien.jpg" alt="Promenade" loading="lazy"></a><figcaption><span class="n">05</span><span class="t">Promenade</span><span class="d"></span></figcaption></figure></div></section>
+<section class="tete-pf"><h1>portfolio</h1><p>Le prototype de rose.null, en photos, en vidéos et en sons. Un clic ouvre en grand ; les vidéos, avec le son.</p></section>
+<nav class="filtres" aria-label="Filtrer"><button type="button" data-r="tout" aria-pressed="true">tout<span>5</span></button><button type="button" data-r="prototypes" aria-pressed="false">prototypes<span>1</span></button><button type="button" data-r="videos" aria-pressed="false">vidéos<span>2</span></button><button type="button" data-r="sons" aria-pressed="false">sons<span>0</span></button><button type="button" data-r="photos" aria-pressed="false">photos<span>2</span></button></nav>
+<section class="galerie" aria-label="Galerie"><figure class="piece" data-r="prototypes"><a class="socle" href="../medias/prototype-ecran-pi5.jpg" target="_blank" rel="noopener" aria-label="Ouvrir en grand : Raspberry Pi 5 et écran 3,5&quot;"><img src="../medias/prototype-ecran-pi5.jpg" alt="Raspberry Pi 5 et écran 3,5&quot;" loading="lazy"></a><figcaption><span class="l1"><span>01 · prototype</span><span>2026-11</span></span><span class="t">Raspberry Pi 5 et écran 3,5&quot;</span><p>L&#x27;écran IPS 480 × 320 branché sur plaque d&#x27;essai, page SOUND › FIL.</p></figcaption></figure><figure class="piece" data-r="videos"><a class="socle" href="../medias/video-1.mp4" target="_blank" rel="noopener" aria-label="Voir avec le son : INPUT › ENTREE"><video src="../medias/video-1.mp4" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video></a><figcaption><span class="l1"><span>02 · vidéo</span><span>2026-11</span></span><span class="t">INPUT › ENTREE</span><p>Le simulateur d&#x27;écran, page INPUT.</p></figcaption></figure><figure class="piece" data-r="videos"><a class="socle" href="../medias/video-2.mp4" target="_blank" rel="noopener" aria-label="Voir avec le son : LOOPER › GLANES"><video src="../medias/video-2.mp4" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video></a><figcaption><span class="l1"><span>03 · vidéo</span><span>2026-11</span></span><span class="t">LOOPER › GLANES</span><p>Les têtes GLANES sur la boucle.</p></figcaption></figure><figure class="piece attente" data-r="sons" hidden><div class="socle vide">sons à venir</div><figcaption><span class="l1"><span>— · son</span><span></span></span></figcaption></figure><figure class="piece" data-r="photos"><a class="socle" href="../medias/photo-sax.jpg" target="_blank" rel="noopener" aria-label="Ouvrir en grand : Sax"><img src="../medias/photo-sax.jpg" alt="Sax" loading="lazy"></a><figcaption><span class="l1"><span>04 · photo</span><span></span></span><span class="t">Sax</span></figcaption></figure><figure class="piece" data-r="photos"><a class="socle" href="../medias/photo-chien.jpg" target="_blank" rel="noopener" aria-label="Ouvrir en grand : Promenade"><img src="../medias/photo-chien.jpg" alt="Promenade" loading="lazy"></a><figcaption><span class="l1"><span>05 · photo</span><span></span></span><span class="t">Promenade</span></figcaption></figure></section>
 </main>
+<script>(function () {
+  var b = document.querySelectorAll('.filtres button'), p = document.querySelectorAll('.piece');
+  b.forEach(function (x) { x.addEventListener('click', function () {
+    var r = x.dataset.r; b.forEach(function (y) { y.setAttribute('aria-pressed', String(y === x)); });
+    p.forEach(function (q) { q.hidden = r === 'tout' ? q.classList.contains('attente') : q.dataset.r !== r; });
+  }); });
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.socle video').forEach(function (v) { v.removeAttribute('autoplay'); v.pause(); });
+  }
+})();</script>
 <footer class="pied"><span>rose.null music system</span><span>instrument · Pure Data · Raspberry Pi 5</span><span>version 2.31</span></footer>
 </body>
 </html>
