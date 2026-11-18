@@ -41,16 +41,39 @@ main { max-width: 1280px; margin: 0 auto }
 .p2 { grid-column: 8 / span 4; margin-top: 12vw !important }
 .p3 { grid-column: 5 / span 3 }
 .p4 { grid-column: 9 / span 3; margin-top: 6vw !important }
-/* page liens : des objets centrés, l'image puis le titre en capitales grasses et la nature en italique */
-.liens { padding-block: 40px 100px; display: grid; gap: 72px }
-.liens h2 { margin: 0 0 28px; text-align: center; font-size: 13px; font-weight: 600; text-transform: uppercase }
-.liens ol { list-style: none; margin: 0 auto; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 210px)); justify-content: center; gap: 48px 36px }
-.liens li a { display: grid; justify-items: center; gap: 4px; text-align: center }
-.liens .v { height: 150px; display: grid; place-items: end center; margin-bottom: 10px }
-.liens .v img { max-height: 150px; max-width: 100%; width: auto; height: auto; display: block }
-.liens .v svg { width: 34px; height: 34px }
-.liens .t { font-weight: 600; text-transform: uppercase; overflow-wrap: anywhere }
-.liens .y { font-style: italic; color: var(--doux) }
+/* page liens : une discographie en très grand. Au survol, la pochette (ou l'image de la vidéo) apparaît et suit la souris,
+   les autres lignes s'effacent ; sur écran tactile, une petite vignette devant chaque titre. */
+.liens { padding-block: clamp(24px, 5vw, 64px) 120px; display: grid; gap: clamp(48px, 7vw, 96px) }
+.liens h2 { margin: 0 0 14px; font-size: 13px; font-weight: 400; color: var(--doux); display: flex; gap: 12px; align-items: baseline }
+.liens h2 span { color: var(--c4) }
+.liens ol { list-style: none; margin: 0; padding: 0 }
+.ligne { display: grid; grid-template-columns: 3.2em minmax(0, 1fr) auto; gap: 0 18px; align-items: baseline; padding: .22em 0;
+  transition: opacity .25s }
+.ligne .n { font-size: 13px; color: var(--doux); font-variant-numeric: tabular-nums }
+.ligne .t { font-size: clamp(24px, 4.6vw, 64px); line-height: 1.04; letter-spacing: -.045em; overflow-wrap: anywhere }
+.ligne .y { font-size: 12px; color: var(--doux); white-space: nowrap; font-style: italic }
+.ligne .mini { display: none }
+.liens ol:hover .ligne, .liens ol:focus-within .ligne { opacity: .18 }
+.liens ol .ligne:hover, .liens ol .ligne:focus-visible { opacity: 1; text-decoration: none }
+.ligne:hover .n, .ligne:focus-visible .n { color: var(--c4) }
+.ligne:focus-visible .t { text-decoration: underline; text-underline-offset: .12em; text-decoration-thickness: 2px }
+.suivre { display: flex; gap: 14px 32px; flex-wrap: wrap; font-size: clamp(18px, 2.4vw, 28px); letter-spacing: -.03em }
+.suivre a { display: inline-flex; align-items: center; gap: 10px }
+.suivre svg { width: .9em; height: .9em }
+.apercu { position: fixed; z-index: 20; left: 0; top: 0; pointer-events: none; opacity: 0; transition: opacity .2s; width: 260px;
+  transform: translate(-50%, -50%) }
+.apercu.on { opacity: 1 }
+.apercu img { width: 100%; height: auto; display: block }
+.apercu.large { width: 320px }
+@media (hover: none), (max-width: 760px) {
+  .ligne { grid-template-columns: 56px minmax(0, 1fr); padding: 8px 0; align-items: center }
+  .ligne .n { display: none }
+  .ligne .mini { display: block; width: 56px; height: 56px; object-fit: cover }
+  .ligne .y { grid-column: 2 }
+  .ligne .t { font-size: clamp(20px, 6.2vw, 30px) }
+  .liens ol:hover .ligne, .liens ol:focus-within .ligne { opacity: 1 }
+  .apercu { display: none } }
+@media (prefers-reduced-motion: reduce) { .ligne, .apercu { transition: none } }
 .pied { text-align: center; padding-block: 24px 36px; color: var(--doux) }
 @media (max-width: 760px) {
   .ouverture figure { width: min(78vw, 420px) }
