@@ -12,7 +12,7 @@ a:hover, a:focus-visible { text-decoration: underline; text-underline-offset: 2p
 body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg) }
 .haut nav { display: inline-flex; gap: 6px 10px; flex-wrap: wrap; justify-content: center }
 .haut nav a[aria-current] { text-decoration: underline; text-underline-offset: 2px }
-main { max-width: 1280px; margin: 0 auto }
+main { max-width: 1320px; margin: 0 auto }
 .majuscules { font-weight: 600; text-transform: uppercase }
 /* ouverture : la première image au centre, le nom posé dessus */
 .ouverture { position: relative; min-height: calc(100svh - 40px); display: grid; place-items: center; margin: 0 }
@@ -79,3 +79,39 @@ main { max-width: 1280px; margin: 0 auto }
   .ouverture figure { width: min(78vw, 420px) }
   .p1, .p2, .p3, .p4 { grid-column: 2 / span 10; margin-top: 0 !important }
   .p2, .p4 { grid-column: 4 / span 9 } .p3 { grid-column: 1 / span 8 } }
+/* 20/11 : même langage que le manuel — menu en une ligne (non fixé), mots géants, lignes à points de conduite, images posées */
+.haut { position: static; text-align: left; padding-block: 10px; max-width: 1320px; margin: 0 auto }
+.haut nav { display: flex; width: 100%; gap: 6px 16px; justify-content: flex-start; color: var(--doux) }
+.haut nav a:first-child { margin-right: auto; color: var(--encre) }
+.haut nav a[aria-current] { color: var(--encre) }
+main.acc { max-width: 1320px }
+.acc .ouv { padding-block: 4vh 12vh; display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 24px 48px; align-items: end }
+.acc .ouv .titre { grid-column: 1 / -1; display: flex; justify-content: space-between; color: var(--doux); border-bottom: 1px solid var(--encre); padding-bottom: 8px }
+.acc .sommaire { list-style: none; margin: 0; padding: 0 }
+.acc .sommaire a { display: flex; align-items: baseline; gap: .4em; font-size: clamp(48px, 10vw, 150px); line-height: .92; letter-spacing: -.065em; transition: opacity .2s; text-decoration: none }
+.acc .sommaire .n { font-size: 13px; letter-spacing: 0; color: var(--doux); width: 2.6em; flex: none }
+.acc .sommaire:hover a { opacity: .15 } .acc .sommaire a:hover, .acc .sommaire a:focus-visible { opacity: 1 }
+.acc .sommaire a:hover .n { color: var(--c4) }
+.acc .photo { margin: 0; line-height: 0 }
+.acc .photo img, .acc .photo video { width: 100%; height: auto; display: block }
+.acc .sec { border-top: 1px solid var(--encre); padding-block: 9vh 4vh }
+.acc .sec h2 { margin: 0 0 4vh; font-weight: 400; font-size: clamp(48px, 11vw, 168px); line-height: .84; letter-spacing: -.075em; margin-left: -.04em }
+.acc .deux { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 24px 64px }
+.acc .deux p { margin: 0 0 12px; font-size: 14px; max-width: 62ch }
+.conduite { list-style: none; margin: 0; padding: 0 }
+.conduite li a, .conduite li > span { display: flex; align-items: baseline; gap: 10px; padding: 6px 0; text-decoration: none }
+.conduite .k { font-size: clamp(16px, 1.6vw, 20px); letter-spacing: -.03em }
+.conduite .pt { flex: 1; border-bottom: 1px dotted var(--doux); transform: translateY(-5px); min-width: 24px }
+.conduite .v { color: var(--doux); white-space: nowrap }
+.conduite a:hover .k { text-decoration: underline; text-underline-offset: 3px }
+.acc .pose { display: flex; flex-wrap: wrap; gap: 64px 5%; align-items: flex-start; padding-block: 9vh 14vh; border-top: 1px solid var(--encre) }
+.acc .pose figure { margin: 0; line-height: 0 }
+.acc .pose img, .acc .pose video { width: 100%; height: auto; display: block }
+.acc .pose .l { width: 58% } .acc .pose .m { width: 37% } .acc .pose .s { width: 30% }
+.acc .pose figure:nth-child(2) { margin-top: 14vw } .acc .pose figure:nth-child(3) { margin-left: 18% }
+.acc .pose .vid { aspect-ratio: 5 / 4; overflow: hidden } .acc .pose .vid video { height: 100%; object-fit: cover }
+.pied { text-align: left; max-width: 1320px; margin: 0 auto; border-top: 1px solid var(--encre); padding-block: 12px 36px }
+@media (max-width: 860px) {
+  .acc .ouv, .acc .deux { grid-template-columns: minmax(0, 1fr) }
+  .acc .pose .l, .acc .pose .m, .acc .pose .s { width: 100% } .acc .pose figure:nth-child(n) { margin: 0 } }
+@media (hover: none) { .acc .sommaire:hover a { opacity: 1 } }
