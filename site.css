@@ -102,3 +102,10 @@ main.acc { max-width: 1320px }
   .acc .ouv, .acc .deux { grid-template-columns: minmax(0, 1fr) }
   .acc .pose .l, .acc .pose .m, .acc .pose .s { width: 100% } .acc .pose figure:nth-child(n) { margin: 0 } }
 @media (hover: none) { .acc .sommaire:hover a { opacity: 1 } }
+/* accueil épuré (20/11) : moins de traits, moins de numéros, plus d'air */
+main.acc:not(.cl) .ouv { padding-block: 10vh 16vh; gap: 48px 64px }
+main.acc:not(.cl) .sommaire a { font-size: clamp(30px, 4.6vw, 64px); line-height: 1.08 }
+.acc .sec.min { border-top: 0; padding-block: 0 14vh }
+.acc .sec h2.etiq { margin: 0; font-size: 13px; font-weight: 400; color: var(--doux); letter-spacing: 0; line-height: 1.5 }
+main.acc:not(.cl) .pose { border-top: 0; padding-top: 0; gap: 96px 6% }
+.pied { border-top: 0; color: var(--doux) }
