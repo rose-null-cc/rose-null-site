@@ -41,39 +41,26 @@ main { max-width: 1320px; margin: 0 auto }
 .p2 { grid-column: 8 / span 4; margin-top: 12vw !important }
 .p3 { grid-column: 5 / span 3 }
 .p4 { grid-column: 9 / span 3; margin-top: 6vw !important }
-/* page liens : une discographie en très grand. Au survol, la pochette (ou l'image de la vidéo) apparaît et suit la souris,
-   les autres lignes s'effacent ; sur écran tactile, une petite vignette devant chaque titre. */
-.liens { padding-block: clamp(24px, 5vw, 64px) 120px; display: grid; gap: clamp(48px, 7vw, 96px) }
-.liens h2 { margin: 0 0 14px; font-size: 13px; font-weight: 400; color: var(--doux); display: flex; gap: 12px; align-items: baseline }
-.liens h2 span { color: var(--c4) }
-.liens ol { list-style: none; margin: 0; padding: 0 }
-.ligne { display: grid; grid-template-columns: 3.2em minmax(0, 1fr) auto; gap: 0 18px; align-items: baseline; padding: .22em 0;
-  transition: opacity .25s }
-.ligne .n { font-size: 13px; color: var(--doux); font-variant-numeric: tabular-nums }
-.ligne .t { font-size: clamp(24px, 4.6vw, 64px); line-height: 1.04; letter-spacing: -.045em; overflow-wrap: anywhere }
-.ligne .y { font-size: 12px; color: var(--doux); white-space: nowrap; font-style: italic }
-.ligne .mini { display: none }
-.liens ol:hover .ligne, .liens ol:focus-within .ligne { opacity: .18 }
-.liens ol .ligne:hover, .liens ol .ligne:focus-visible { opacity: 1; text-decoration: none }
-.ligne:hover .n, .ligne:focus-visible .n { color: var(--c4) }
-.ligne:focus-visible .t { text-decoration: underline; text-underline-offset: .12em; text-decoration-thickness: 2px }
-.suivre { display: flex; gap: 14px 32px; flex-wrap: wrap; font-size: clamp(18px, 2.4vw, 28px); letter-spacing: -.03em }
-.suivre a { display: inline-flex; align-items: center; gap: 10px }
-.suivre svg { width: .9em; height: .9em }
-.apercu { position: fixed; z-index: 20; left: 0; top: 0; pointer-events: none; opacity: 0; transition: opacity .2s; width: 260px;
-  transform: translate(-50%, -50%) }
-.apercu.on { opacity: 1 }
-.apercu img { width: 100%; height: auto; display: block }
-.apercu.large { width: 320px }
+/* page liens (20/11) : même langage que l'accueil — grands titres de partie, lignes à points de conduite, l'image au survol */
+.cl .sec h2 { margin-bottom: 3vh }
+.cl .ouv { padding-block: 3vh 0 } .cl .ouv + .sec { border-top: 0; padding-top: 4vh }
+.cl .deux > .compte { color: var(--doux) }
+.cl .conduite a { transition: opacity .2s }
+.cl .conduite:hover a { opacity: .25 } .cl .conduite a:hover, .cl .conduite a:focus-visible { opacity: 1 }
+.cl .conduite .n { color: var(--doux); width: 2.4em; flex: none; font-size: 12px }
+.cl .conduite a:hover .n { color: var(--c4) }
+.cl .conduite .ic { width: 2.4em; flex: none } .cl .conduite .ic svg { width: 16px; height: 16px; transform: translateY(2px) }
+.cl .conduite .v { font-style: italic }
+.cl .mini { display: none }
+.apercu { position: fixed; z-index: 20; left: 0; top: 0; pointer-events: none; opacity: 0; transition: opacity .2s; width: 280px;
+  transform: translate(-50%, -50%); line-height: 0 }
+.apercu.on { opacity: 1 } .apercu img { width: 100%; height: auto; display: block }
 @media (hover: none), (max-width: 760px) {
-  .ligne { grid-template-columns: 56px minmax(0, 1fr); padding: 8px 0; align-items: center }
-  .ligne .n { display: none }
-  .ligne .mini { display: block; width: 56px; height: 56px; object-fit: cover }
-  .ligne .y { grid-column: 2 }
-  .ligne .t { font-size: clamp(20px, 6.2vw, 30px) }
-  .liens ol:hover .ligne, .liens ol:focus-within .ligne { opacity: 1 }
-  .apercu { display: none } }
-@media (prefers-reduced-motion: reduce) { .ligne, .apercu { transition: none } }
+  .cl .mini { display: block; width: 40px; height: 40px; object-fit: cover; flex: none }
+  .cl .conduite .n { display: none } .cl .conduite .v { display: none } .cl .conduite .pt { display: none }
+  .cl .conduite a { align-items: center; gap: 14px } .cl .deux > .compte { display: none }
+  .cl .conduite:hover a { opacity: 1 } .apercu { display: none } }
+@media (prefers-reduced-motion: reduce) { .cl .conduite a, .apercu { transition: none } }
 .pied { text-align: center; padding-block: 24px 36px; color: var(--doux) }
 @media (max-width: 760px) {
   .ouverture figure { width: min(78vw, 420px) }
@@ -85,22 +72,22 @@ main { max-width: 1320px; margin: 0 auto }
 .haut nav a:first-child { margin-right: auto; color: var(--encre) }
 .haut nav a[aria-current] { color: var(--encre) }
 main.acc { max-width: 1320px }
-.acc .ouv { padding-block: 4vh 12vh; display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 24px 48px; align-items: end }
+.acc .ouv { padding-block: 3vh 9vh; display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 24px 48px; align-items: end }
 .acc .ouv .titre { grid-column: 1 / -1; display: flex; justify-content: space-between; color: var(--doux); border-bottom: 1px solid var(--encre); padding-bottom: 8px }
 .acc .sommaire { list-style: none; margin: 0; padding: 0 }
-.acc .sommaire a { display: flex; align-items: baseline; gap: .4em; font-size: clamp(48px, 10vw, 150px); line-height: .92; letter-spacing: -.065em; transition: opacity .2s; text-decoration: none }
+.acc .sommaire a { display: flex; align-items: baseline; gap: .4em; font-size: clamp(34px, 6vw, 88px); line-height: .95; letter-spacing: -.06em; transition: opacity .2s; text-decoration: none }
 .acc .sommaire .n { font-size: 13px; letter-spacing: 0; color: var(--doux); width: 2.6em; flex: none }
 .acc .sommaire:hover a { opacity: .15 } .acc .sommaire a:hover, .acc .sommaire a:focus-visible { opacity: 1 }
 .acc .sommaire a:hover .n { color: var(--c4) }
 .acc .photo { margin: 0; line-height: 0 }
 .acc .photo img, .acc .photo video { width: 100%; height: auto; display: block }
-.acc .sec { border-top: 1px solid var(--encre); padding-block: 9vh 4vh }
-.acc .sec h2 { margin: 0 0 4vh; font-weight: 400; font-size: clamp(48px, 11vw, 168px); line-height: .84; letter-spacing: -.075em; margin-left: -.04em }
+.acc .sec { border-top: 1px solid var(--encre); padding-block: 6vh 3vh }
+.acc .sec h2 { margin: 0 0 4vh; font-weight: 400; font-size: clamp(32px, 6vw, 88px); line-height: .9; letter-spacing: -.075em; margin-left: -.04em }
 .acc .deux { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 24px 64px }
 .acc .deux p { margin: 0 0 12px; font-size: 14px; max-width: 62ch }
 .conduite { list-style: none; margin: 0; padding: 0 }
 .conduite li a, .conduite li > span { display: flex; align-items: baseline; gap: 10px; padding: 6px 0; text-decoration: none }
-.conduite .k { font-size: clamp(16px, 1.6vw, 20px); letter-spacing: -.03em }
+.conduite .k { font-size: clamp(14px, 1.2vw, 16px); letter-spacing: -.02em; min-width: 0; overflow-wrap: anywhere }
 .conduite .pt { flex: 1; border-bottom: 1px dotted var(--doux); transform: translateY(-5px); min-width: 24px }
 .conduite .v { color: var(--doux); white-space: nowrap }
 .conduite a:hover .k { text-decoration: underline; text-underline-offset: 3px }
