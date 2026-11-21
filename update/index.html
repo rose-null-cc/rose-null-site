@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
+<meta name="robots" content="noai, noimageai">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
@@ -71,6 +72,10 @@ body { padding-bottom: calc(44px + env(safe-area-inset-bottom, 0px)) !important 
     maj();
   });
   window.addEventListener('pagehide', function () { try { sessionStorage.setItem('rn-son-pos', JSON.stringify({ i: i, t: a.currentTime })); } catch (e) {} });
+})();</script><script>(function () {
+  function media(e) { return e.target.closest && e.target.closest('img, video, audio, svg, .tab'); }
+  document.addEventListener('contextmenu', function (e) { if (media(e)) e.preventDefault(); });
+  document.addEventListener('dragstart', function (e) { if (media(e)) e.preventDefault(); });
 })();</script>
 <title>rose.null · update</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

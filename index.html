@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>rose.null</title>
 <meta name="description" content="rose.null : Louis Rose, musique et instrument en Pure Data.">
+<meta name="robots" content="noai, noimageai">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,600;1,400&display=swap">
 <link rel="stylesheet" href="site.css?v=c345d2a0">
@@ -72,6 +73,10 @@ body { padding-bottom: calc(44px + env(safe-area-inset-bottom, 0px)) !important 
     maj();
   });
   window.addEventListener('pagehide', function () { try { sessionStorage.setItem('rn-son-pos', JSON.stringify({ i: i, t: a.currentTime })); } catch (e) {} });
+})();</script><script>(function () {
+  function media(e) { return e.target.closest && e.target.closest('img, video, audio, svg, .tab'); }
+  document.addEventListener('contextmenu', function (e) { if (media(e)) e.preventDefault(); });
+  document.addEventListener('dragstart', function (e) { if (media(e)) e.preventDefault(); });
 })();</script>
 <main class="acc">
 <h1 class="cache">rose.null</h1>
@@ -96,6 +101,6 @@ body { padding-bottom: calc(44px + env(safe-area-inset-bottom, 0px)) !important 
     l.addEventListener('mouseleave', function () { a.classList.remove('on'); });
   });
 })();</script>
-<footer class="pied">rose.null · version 2.39</footer>
+<footer class="pied">rose.null · version 2.39 · © 2026 Louis Rose, tous droits réservés</footer>
 </body>
 </html>
