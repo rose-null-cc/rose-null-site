@@ -12,6 +12,9 @@ a:hover, a:focus-visible { text-decoration: underline; text-underline-offset: 2p
 body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg) }
 .haut nav { display: inline-flex; gap: 6px 10px; flex-wrap: wrap; justify-content: center }
 .haut nav a[aria-current] { text-decoration: underline; text-underline-offset: 2px }
+.son { font: inherit; background: none; border: 0; padding: 0; color: var(--doux); cursor: pointer }
+.son.joue { color: var(--encre) } .son:focus-visible { outline: 1px solid var(--encre); outline-offset: 2px }
+.son .t { max-width: 22ch; display: inline-block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; vertical-align: bottom }
 main { max-width: 1320px; margin: 0 auto }
 .majuscules { font-weight: 600; text-transform: uppercase }
 /* ouverture : la première image au centre, le nom posé dessus */
