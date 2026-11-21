@@ -10,7 +10,47 @@
 font-family:"IBM Plex Mono",ui-monospace,Consolas,monospace;font-size:13px;background:#fff}.haut-site nav{display:flex;width:100%;gap:6px 16px;flex-wrap:wrap}.haut-site nav a:first-child{margin-right:auto;color:#000}
 .haut-site a{color:#707070;text-decoration:none}.haut-site .son{font:inherit;background:none;border:0;padding:0;color:#707070;cursor:pointer}.haut-site .son.joue{color:#000}.haut-site .son:focus-visible{outline:1px solid #000}.haut-site a[aria-current]{color:#000}.haut-site a:hover,.haut-site a:focus-visible,.haut-site a[aria-current]{text-decoration:underline;text-underline-offset:2px;outline:none}</style>
 <header class="haut-site"><nav aria-label="Pages"><a href="../">rose.null</a><a href="../liens/">Liens</a><a href="../manuel/" aria-current="page">Manuel</a><a href="../update/">Update</a></nav></header>
-
+<style>
+.barre-son { position: fixed; z-index: 30; left: 0; right: 0; bottom: 0; background: #fff; border-top: 1px solid #000;
+  font-family: "IBM Plex Mono", ui-monospace, Consolas, monospace; font-size: 12px; color: #707070;
+  padding: 7px max(16px, env(safe-area-inset-right, 0px)) calc(7px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)) }
+.barre-son .in { max-width: 1320px; margin: 0 auto; display: flex; gap: 6px 18px; align-items: baseline; flex-wrap: wrap }
+.barre-son .t { margin-right: auto; color: #000; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 60vw }
+.barre-son button { font: inherit; background: none; border: 0; padding: 0; color: #707070; cursor: pointer }
+.barre-son button:hover, .barre-son button.on { color: #000; text-decoration: underline; text-underline-offset: 2px }
+.barre-son button:focus-visible { outline: 1px solid #000; outline-offset: 2px }
+body { padding-bottom: calc(40px + env(safe-area-inset-bottom, 0px)) !important }
+.ecran1 { height: calc(100svh - 44px - 36px - env(safe-area-inset-bottom, 0px)) !important }
+</style><div class="barre-son" role="region" aria-label="Son de fond"><div class="in"><span class="t" aria-live="polite"></span><button type="button" data-a="play">play</button><button type="button" data-a="stop">stop</button><button type="button" data-a="suivant">suivant</button><button type="button" data-a="muet" aria-pressed="false">muet</button></div></div><script>(function () {
+  var L = [{"f": "../medias/sons/wcs-cc-007.mp3", "t": "wcs.cc 007"}, {"f": "../medias/sons/wcs-cc-006.mp3", "t": "wcs.cc 006"}, {"f": "../medias/sons/wcs-cc-005.mp3", "t": "wcs.cc 005"}, {"f": "../medias/sons/wcs-cc-004.mp3", "t": "wcs.cc 004"}, {"f": "../medias/sons/vcs-cc-steam-004.mp3", "t": "vcs.cc steam 004"}, {"f": "../medias/sons/vcs-cc-reed-001.mp3", "t": "vcs.cc reed 001"}], z = document.querySelector('.barre-son'), t = z.querySelector('.t'), a = new Audio(); a.preload = 'none'; a.volume = .55;
+  function bt(n) { return z.querySelector('[data-a="' + n + '"]'); }
+  var st = {}; try { st = JSON.parse(sessionStorage.getItem('rn-son-pos') || '{}'); } catch (e) {}
+  var i = 0, reprise = st.t || 0, arret = false;
+  try { arret = localStorage.getItem('rn-son') === 'off'; a.muted = localStorage.getItem('rn-son-muet') === '1'; } catch (e) {}
+  function garde(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+  function charge(k) { i = (k + L.length) % L.length; a.src = L[i].f; t.textContent = '♪ ' + L[i].t; }
+  function maj() { bt('play').classList.toggle('on', !a.paused); bt('stop').classList.toggle('on', a.paused);
+    bt('muet').classList.toggle('on', a.muted); bt('muet').setAttribute('aria-pressed', String(a.muted)); }
+  charge(st.i || 0); maj();
+  a.addEventListener('loadedmetadata', function () { if (reprise && reprise < a.duration - 1) a.currentTime = reprise; reprise = 0; });
+  a.addEventListener('ended', function () { charge(i + 1); a.play().catch(function () {}); });
+  ['play', 'pause', 'volumechange'].forEach(function (ev) { a.addEventListener(ev, maj); });
+  function lance() { if (!arret) a.play().catch(function () {}); }
+  function premier(e) { if (e.target.closest && e.target.closest('.barre-son')) return;
+    document.removeEventListener('pointerdown', premier, true); document.removeEventListener('keydown', premier, true); lance(); }
+  document.addEventListener('pointerdown', premier, true); document.addEventListener('keydown', premier, true);
+  lance();
+  z.addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    var q = b.dataset.a;
+    if (q === 'play') { arret = false; garde('rn-son', 'on'); a.play().catch(function () {}); }
+    else if (q === 'stop') { arret = true; garde('rn-son', 'off'); a.pause(); a.currentTime = 0; }
+    else if (q === 'suivant') { charge(i + 1); if (!arret) a.play().catch(function () {}); }
+    else if (q === 'muet') { a.muted = !a.muted; garde('rn-son-muet', a.muted ? '1' : '0'); }
+    maj();
+  });
+  window.addEventListener('pagehide', function () { try { sessionStorage.setItem('rn-son-pos', JSON.stringify({ i: i, t: a.currentTime })); } catch (e) {} });
+})();</script>
 <title>rose.null · manuel 2.38</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&display=swap">
