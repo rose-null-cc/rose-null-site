@@ -12,32 +12,50 @@
 <body>
 <header class="haut"><nav aria-label="Pages"><a href="../">rose.null</a><a href="../liens/" aria-current="page">Liens</a><a href="../manuel/">Manuel</a><a href="../update/">Update</a></nav></header>
 <style>
-.barre-son { position: fixed; z-index: 30; left: 0; right: 0; bottom: 0; background: #fff; border-top: 1px solid #000;
-  font-family: "IBM Plex Mono", ui-monospace, Consolas, monospace; font-size: 12px; color: #707070;
-  padding: 7px max(16px, env(safe-area-inset-right, 0px)) calc(7px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)) }
-.barre-son .in { max-width: 1320px; margin: 0 auto; display: flex; gap: 6px 18px; align-items: baseline; flex-wrap: wrap }
-.barre-son .t { margin-right: auto; color: #000; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 60vw }
-.barre-son button { font: inherit; background: none; border: 0; padding: 0; color: #707070; cursor: pointer }
-.barre-son button:hover, .barre-son button.on { color: #000; text-decoration: underline; text-underline-offset: 2px }
-.barre-son button:focus-visible { outline: 1px solid #000; outline-offset: 2px }
-body { padding-bottom: calc(40px + env(safe-area-inset-bottom, 0px)) !important }
-.ecran1 { height: calc(100svh - 44px - 36px - env(safe-area-inset-bottom, 0px)) !important }
-</style><div class="barre-son" role="region" aria-label="Son de fond"><div class="in"><span class="t" aria-live="polite"></span><button type="button" data-a="play">play</button><button type="button" data-a="stop">stop</button><button type="button" data-a="suivant">suivant</button><button type="button" data-a="muet" aria-pressed="false">muet</button></div></div><script>(function () {
-  var L = [{"f": "../medias/sons/wcs-cc-007.mp3", "t": "wcs.cc 007"}, {"f": "../medias/sons/wcs-cc-006.mp3", "t": "wcs.cc 006"}, {"f": "../medias/sons/wcs-cc-005.mp3", "t": "wcs.cc 005"}, {"f": "../medias/sons/wcs-cc-004.mp3", "t": "wcs.cc 004"}, {"f": "../medias/sons/vcs-cc-steam-004.mp3", "t": "vcs.cc steam 004"}, {"f": "../medias/sons/vcs-cc-reed-001.mp3", "t": "vcs.cc reed 001"}], z = document.querySelector('.barre-son'), t = z.querySelector('.t'), a = new Audio(); a.preload = 'none'; a.volume = .55;
+.barre-son { position: fixed; z-index: 30; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,.94); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  font-family: "IBM Plex Mono", ui-monospace, Consolas, monospace; font-size: 12px; color: #707070; box-shadow: 0 -1px 0 #e2e2e2;
+  padding: 9px max(16px, env(safe-area-inset-right, 0px)) calc(9px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)) }
+.barre-son .fil { position: absolute; left: 0; top: -1px; height: 1px; width: 0; background: #ff5b1f; transition: width .25s linear }
+.barre-son .in { max-width: 1320px; margin: 0 auto; display: flex; gap: 14px; align-items: center }
+.barre-son .maison { color: #000; text-decoration: none; letter-spacing: -.02em }
+.barre-son .maison:hover, .barre-son .maison:focus-visible { text-decoration: underline; text-underline-offset: 2px; outline: none }
+.barre-son .lect { display: flex; align-items: center; gap: 12px; flex: 1; min-width: 0; justify-content: flex-end }
+.barre-son .eq { display: inline-flex; gap: 2px; align-items: flex-end; height: 10px; width: 12px; flex: none }
+.barre-son .eq i { display: block; width: 2px; height: 3px; background: #c4c4c4 }
+.barre-son.joue .eq i { background: #000; animation: eq 0.9s ease-in-out infinite alternate }
+.barre-son.joue .eq i:nth-child(2) { animation-duration: .7s } .barre-son.joue .eq i:nth-child(3) { animation-duration: 1.1s }
+@keyframes eq { 0% { height: 2px } 100% { height: 10px } }
+.barre-son .t { color: #000; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap }
+.barre-son .h { font-variant-numeric: tabular-nums; flex: none }
+.barre-son .cmd { display: inline-flex; gap: 4px; flex: none }
+.barre-son button { width: 26px; height: 22px; display: inline-grid; place-items: center; background: none; border: 0; padding: 0; color: #9a9a9a; cursor: pointer }
+.barre-son button svg { width: 12px; height: 12px; fill: currentColor }
+.barre-son button:hover, .barre-son button.on { color: #000 }
+.barre-son button:focus-visible { outline: 1px solid #000 }
+body { padding-bottom: calc(44px + env(safe-area-inset-bottom, 0px)) !important }
+.ecran1 { height: calc(100svh - 44px - 40px - env(safe-area-inset-bottom, 0px)) !important }
+@media (max-width: 520px) { .barre-son .h { display: none } }
+@media (prefers-reduced-motion: reduce) { .barre-son.joue .eq i { animation: none; height: 7px } .barre-son .fil { transition: none } }
+</style><div class="barre-son" role="region" aria-label="Accueil et son de fond"><span class="fil"></span><div class="in"><a class="maison" href="../" aria-label="Accueil">rose.null</a><div class="lect"><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span><span class="t" aria-live="polite"></span><span class="h">0:00</span><span class="cmd"><button type="button" data-a="play" aria-label="Lecture" title="Lecture"><svg viewBox="0 0 12 12"><path d="M2 1l9 5-9 5z"/></svg></button><button type="button" data-a="stop" aria-label="Arrêt" title="Arrêt"><svg viewBox="0 0 12 12"><rect x="2" y="2" width="8" height="8"/></svg></button><button type="button" data-a="suivant" aria-label="Morceau suivant" title="Morceau suivant"><svg viewBox="0 0 12 12"><path d="M1 1l7 5-7 5z"/><rect x="9" y="1" width="2" height="10"/></svg></button><button type="button" data-a="muet" aria-label="Couper le son" title="Couper le son" aria-pressed="false"><svg viewBox="0 0 12 12"><path d="M1 4h2.5L7 1v10L3.5 8H1z"/><path d="M8.6 3.4a3.6 3.6 0 0 1 0 5.2" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></button></span></div></div></div><script>(function () {
+  var L = [{"f": "../medias/sons/wcs-cc-007.mp3", "t": "wcs.cc 007"}, {"f": "../medias/sons/wcs-cc-006.mp3", "t": "wcs.cc 006"}, {"f": "../medias/sons/wcs-cc-005.mp3", "t": "wcs.cc 005"}, {"f": "../medias/sons/wcs-cc-004.mp3", "t": "wcs.cc 004"}, {"f": "../medias/sons/vcs-cc-steam-004.mp3", "t": "vcs.cc steam 004"}, {"f": "../medias/sons/vcs-cc-reed-001.mp3", "t": "vcs.cc reed 001"}], z = document.querySelector('.barre-son'), t = z.querySelector('.t'), h = z.querySelector('.h'), fil = z.querySelector('.fil'), a = new Audio();
+  a.preload = 'none'; a.volume = .55;
   function bt(n) { return z.querySelector('[data-a="' + n + '"]'); }
+  function mn(x) { x = Math.max(0, Math.floor(x || 0)); return Math.floor(x / 60) + ':' + ('0' + x % 60).slice(-2); }
   var st = {}; try { st = JSON.parse(sessionStorage.getItem('rn-son-pos') || '{}'); } catch (e) {}
   var i = 0, reprise = st.t || 0, arret = false;
   try { arret = localStorage.getItem('rn-son') === 'off'; a.muted = localStorage.getItem('rn-son-muet') === '1'; } catch (e) {}
   function garde(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
-  function charge(k) { i = (k + L.length) % L.length; a.src = L[i].f; t.textContent = '♪ ' + L[i].t; }
-  function maj() { bt('play').classList.toggle('on', !a.paused); bt('stop').classList.toggle('on', a.paused);
+  function charge(k) { i = (k + L.length) % L.length; a.src = L[i].f; t.textContent = L[i].t; h.textContent = '0:00'; fil.style.width = '0'; }
+  function maj() { z.classList.toggle('joue', !a.paused); bt('play').classList.toggle('on', !a.paused); bt('stop').classList.toggle('on', a.paused);
     bt('muet').classList.toggle('on', a.muted); bt('muet').setAttribute('aria-pressed', String(a.muted)); }
   charge(st.i || 0); maj();
   a.addEventListener('loadedmetadata', function () { if (reprise && reprise < a.duration - 1) a.currentTime = reprise; reprise = 0; });
+  a.addEventListener('timeupdate', function () { h.textContent = mn(a.currentTime) + (isFinite(a.duration) ? ' / ' + mn(a.duration) : '');
+    fil.style.width = (isFinite(a.duration) && a.duration ? 100 * a.currentTime / a.duration : 0) + '%'; });
   a.addEventListener('ended', function () { charge(i + 1); a.play().catch(function () {}); });
   ['play', 'pause', 'volumechange'].forEach(function (ev) { a.addEventListener(ev, maj); });
   function lance() { if (!arret) a.play().catch(function () {}); }
-  function premier(e) { if (e.target.closest && e.target.closest('.barre-son')) return;
+  function premier(e) { if (e.target.closest && e.target.closest('.barre-son button')) return;
     document.removeEventListener('pointerdown', premier, true); document.removeEventListener('keydown', premier, true); lance(); }
   document.addEventListener('pointerdown', premier, true); document.addEventListener('keydown', premier, true);
   lance();
