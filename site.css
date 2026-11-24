@@ -127,3 +127,4 @@ main.acc:not(.cl) .pose figure { width: auto; margin: 0 0 clamp(56px, 9vw, 140px
 .ecran1 .photo img, .ecran1 .photo video { width: 100%; height: 100%; object-fit: cover; object-position: 30% 50%; display: block }
 main.acc:not(.cl) .ouv { display: block; padding-block: 0 14vh }
 .pied { border-top: 0; color: var(--doux) }
+.acc #bio + #actualites { margin-top: 72px }
