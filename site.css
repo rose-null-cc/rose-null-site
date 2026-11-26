@@ -111,15 +111,15 @@ main.acc:not(.cl) .sommaire a { font-size: clamp(30px, 4.6vw, 64px); line-height
 main.acc:not(.cl) .pose { border-top: 0; padding-top: 0; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 0 clamp(12px, 2vw, 28px); align-items: start }
 main.acc:not(.cl) .pose figure { width: auto; margin: 0; position: relative }   /* 27/11, Louis : images serrées, elles peuvent se chevaucher */
 main.acc:not(.cl) .pose figure:nth-child(even) { z-index: 1 }
-.pose .q1 { grid-column: 1 / span 5 }
-.pose .q2 { grid-column: 6 / span 6; margin-top: 7vw !important; margin-left: -4vw !important }
-.pose .q3 { grid-column: 2 / span 10; margin-top: -6vw !important }
-.pose .q4 { grid-column: 1 / span 5; margin-top: -4vw !important }
-.pose .q5 { grid-column: 6 / span 5; margin-top: 2vw !important; margin-left: -3vw !important }
-.pose .q6 { grid-column: 3 / span 6; margin-top: -5vw !important }
-.pose .q7 { grid-column: 9 / span 4; margin-top: 3vw !important; margin-left: -4vw !important }
+.pose .q1 { grid-column: 1 / span 5 } .pose .q1:not(:first-child) { margin-top: -9vw !important }
+.pose .q2 { grid-column: 6 / span 6; margin-top: 4vw !important; margin-left: -8vw !important }
+.pose .q3 { grid-column: 2 / span 10; margin-top: -12vw !important }
+.pose .q4 { grid-column: 1 / span 5; margin-top: -10vw !important }
+.pose .q5 { grid-column: 6 / span 5; margin-top: -4vw !important; margin-left: -7vw !important }
+.pose .q6 { grid-column: 3 / span 6; margin-top: -11vw !important }
+.pose .q7 { grid-column: 9 / span 4; margin-top: -3vw !important; margin-left: -8vw !important }
 @media (max-width: 860px) {
-  main.acc:not(.cl) .pose figure { margin: 0 0 -6vw !important }
+  main.acc:not(.cl) .pose figure { margin: 0 0 -9vw !important }
   .pose .q1, .pose .q3, .pose .q6 { grid-column: 1 / -1 } .pose .q2, .pose .q5 { grid-column: 4 / -1 } .pose .q4, .pose .q7 { grid-column: 1 / span 9 } }
 /* l'image d'abord (20/11) : elle remplit le premier écran ; les mots viennent en descendant */
 .ecran1 { height: calc(100svh - 44px); margin: 0 0 12vh }
